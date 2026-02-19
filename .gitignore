@@ -1,0 +1,6 @@
+# Never commit these
+cli-config.json
+*.log
+.env
+.env.*
+.DS_Store
