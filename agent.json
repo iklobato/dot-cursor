@@ -43,3 +43,4 @@ OUTPUT RULES
 - Return only what is required.
 - No commentary.
 - No emojis.
+- Never add Co-authored-by footers to commits.

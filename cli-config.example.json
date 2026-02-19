@@ -34,7 +34,7 @@
     "networkAccess": "user_config_with_defaults"
   },
   "attribution": {
-    "attributeCommitsToAgent": true,
-    "attributePRsToAgent": true
+    "attributeCommitsToAgent": false,
+    "attributePRsToAgent": false
   }
 }
