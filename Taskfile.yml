@@ -9,7 +9,6 @@ tasks:
     cmds:
       - mkdir -p $HOME/.cursor
       - ln -sf {{.REPO_DIR}}/agent.json $HOME/.cursor/agent.json
-      - ln -sf {{.REPO_DIR}}/.cursor-agent.yaml $HOME/.cursor/.cursor-agent.yaml
       - |
         if [ ! -f $HOME/.cursor/cli-config.json ]; then
           cp {{.REPO_DIR}}/cli-config.example.json $HOME/.cursor/cli-config.json

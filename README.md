@@ -5,7 +5,6 @@ Cursor Agent CLI configuration for consistent behavior across systems.
 ## Contents
 
 - `agent.json` – Default instructions for the cursor-agent CLI
-- `.cursor-agent.yaml` – YAML config with `agent.default_instructions`
 - `cli-config.example.json` – Example `cli-config.json` (no sensitive data)
 - `Taskfile.yml` – `task install` to symlink config into `~/.cursor`
 
@@ -24,7 +23,7 @@ Cursor Agent CLI configuration for consistent behavior across systems.
    task install
    ```
 
-   This creates `~/.cursor`, symlinks `agent.json` and `.cursor-agent.yaml`, and copies `cli-config.example.json` if `cli-config.json` does not exist.
+   This creates `~/.cursor`, symlinks `agent.json`, and copies `cli-config.example.json` if `cli-config.json` does not exist.
 
 3. Authenticate and validate:
 
