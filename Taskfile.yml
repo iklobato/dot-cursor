@@ -1,0 +1,20 @@
+version: '3'
+
+vars:
+  REPO_DIR: '{{.TASKFILE_DIR}}'
+
+tasks:
+  install:
+    desc: Symlink config files into ~/.cursor and set up cli-config
+    cmds:
+      - mkdir -p $HOME/.cursor
+      - ln -sf {{.REPO_DIR}}/agent.json $HOME/.cursor/agent.json
+      - ln -sf {{.REPO_DIR}}/.cursor-agent.yaml $HOME/.cursor/.cursor-agent.yaml
+      - |
+        if [ ! -f $HOME/.cursor/cli-config.json ]; then
+          cp {{.REPO_DIR}}/cli-config.example.json $HOME/.cursor/cli-config.json
+          echo "Created $HOME/.cursor/cli-config.json"
+        else
+          echo "$HOME/.cursor/cli-config.json exists, skipping"
+        fi
+      - echo "Run 'cursor-agent login' to authenticate, then 'cursor-agent about' to validate"

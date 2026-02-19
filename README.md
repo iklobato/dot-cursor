@@ -7,6 +7,7 @@ Cursor Agent CLI configuration for consistent behavior across systems.
 - `agent.json` – Default instructions for the cursor-agent CLI
 - `.cursor-agent.yaml` – YAML config with `agent.default_instructions`
 - `cli-config.example.json` – Example `cli-config.json` (no sensitive data)
+- `Taskfile.yml` – `task install` to symlink config into `~/.cursor`
 
 ## Setup on a new system
 
@@ -14,27 +15,21 @@ Cursor Agent CLI configuration for consistent behavior across systems.
 
    ```bash
    git clone git@github.com:iklobato/dot-cursor.git ~/dot-cursor
+   cd ~/dot-cursor
    ```
 
-2. Symlink config files into `~/.cursor`:
+2. Run the install task ([Task](https://taskfile.dev/) required):
 
    ```bash
-   mkdir -p ~/.cursor
-   ln -sf ~/dot-cursor/agent.json ~/.cursor/agent.json
-   ln -sf ~/dot-cursor/.cursor-agent.yaml ~/.cursor/.cursor-agent.yaml
+   task install
    ```
 
-3. Create `cli-config.json` (login first via `cursor-agent login`):
+   This creates `~/.cursor`, symlinks `agent.json` and `.cursor-agent.yaml`, and copies `cli-config.example.json` if `cli-config.json` does not exist.
+
+3. Authenticate and validate:
 
    ```bash
-   cp ~/dot-cursor/cli-config.example.json ~/.cursor/cli-config.json
-   ```
-
-   Then run `cursor-agent login` to add auth. The CLI will merge your auth into the file.
-
-4. Validate:
-
-   ```bash
+   cursor-agent login
    cursor-agent about
    cursor-agent --print "What is 2+2? Reply with only the number."
    ```
