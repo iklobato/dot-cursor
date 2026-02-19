@@ -16,4 +16,11 @@ tasks:
         else
           echo "$HOME/.cursor/cli-config.json exists, skipping"
         fi
+      - |
+        if [ ! -f $HOME/.cursor/mcp.json ]; then
+          cp {{.REPO_DIR}}/mcp.example.json $HOME/.cursor/mcp.json
+          echo "Created $HOME/.cursor/mcp.json from template (set GITHUB_TOKEN etc.)"
+        else
+          echo "$HOME/.cursor/mcp.json exists, skipping"
+        fi
       - echo "Run 'cursor-agent login' to authenticate, then 'cursor-agent about' to validate"

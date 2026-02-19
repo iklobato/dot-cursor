@@ -1,13 +1,24 @@
 {
   "permissions": {
-    "allow": ["Shell(ls)", "Shell(chmod)", "Shell(curl)", "Shell(jq)"],
+    "allow": [
+      "Shell(ls)",
+      "Shell(chmod)",
+      "Shell(curl)",
+      "Shell(jq)",
+      "Shell(git)",
+      "Shell(cat)",
+      "Shell(rg)",
+      "Shell(python)",
+      "Shell(npm)",
+      "Shell(uv)"
+    ],
     "deny": []
   },
   "version": 1,
   "editor": { "vimMode": false },
   "display": {
-    "showLineNumbers": false,
-    "showThinkingBlocks": false
+    "showLineNumbers": true,
+    "showThinkingBlocks": true
   },
   "model": {
     "modelId": "composer-1.5",

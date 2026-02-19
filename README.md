@@ -5,8 +5,9 @@ Cursor Agent CLI configuration for consistent behavior across systems.
 ## Contents
 
 - `agent.json` – Default instructions for the cursor-agent CLI
-- `cli-config.example.json` – Example `cli-config.json` (no sensitive data)
-- `Taskfile.yml` – `task install` to symlink config into `~/.cursor`
+- `cli-config.example.json` – Example `cli-config.json` (permissions, display, model; no sensitive data)
+- `mcp.example.json` – MCP servers template (GitHub, sequential-thinking, filesystem; use `${GITHUB_TOKEN}` placeholders)
+- `Taskfile.yml` – `task install` to symlink and copy config into `~/.cursor`
 
 ## Setup on a new system
 
@@ -23,9 +24,11 @@ Cursor Agent CLI configuration for consistent behavior across systems.
    task install
    ```
 
-   This creates `~/.cursor`, symlinks `agent.json`, and copies `cli-config.example.json` if `cli-config.json` does not exist.
+   This creates `~/.cursor`, symlinks `agent.json`, copies `cli-config.example.json` if missing, and copies `mcp.example.json` to `mcp.json` if missing.
 
-3. Authenticate and validate:
+3. Configure MCP (if using `mcp.json`): Replace `${GITHUB_TOKEN}` in `~/.cursor/mcp.json` with your token, or set env vars if your MCP runner expands them.
+
+4. Authenticate and validate:
 
    ```bash
    cursor-agent login

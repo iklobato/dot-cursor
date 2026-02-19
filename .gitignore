@@ -1,5 +1,6 @@
 # Never commit these
 cli-config.json
+mcp.json
 *.log
 .env
 .env.*
