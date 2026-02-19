@@ -24,3 +24,30 @@ tasks:
           echo "$HOME/.cursor/mcp.json exists, skipping"
         fi
       - echo "Run 'cursor-agent login' to authenticate, then 'cursor-agent about' to validate"
+
+  validate:
+    desc: Cursor-agent evaluates its own outputs against config rules
+    env:
+      CURSOR_VALIDATE_USE_CACHED: "1"
+    cmds:
+      - chmod +x {{.REPO_DIR}}/scripts/validate.sh
+      - bash {{.REPO_DIR}}/scripts/validate.sh
+
+  validate:live:
+    desc: Run all prompts live, then cursor-agent evaluates (4 API calls, ~5-10 min)
+    env:
+      CURSOR_VALIDATE_USE_CACHED: "0"
+    cmds:
+      - bash {{.REPO_DIR}}/scripts/validate.sh
+
+  validate:quick:
+    desc: Use cached outputs + injected PASS verdict (no API calls)
+    env:
+      CURSOR_VALIDATE_USE_CACHED: "1"
+      CURSOR_VERDICT: |
+        minimal: PASS
+        antihallucination: PASS
+        controlflow: PASS
+        OVERALL: PASS
+    cmds:
+      - bash {{.REPO_DIR}}/scripts/validate.sh

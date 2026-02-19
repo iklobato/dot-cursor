@@ -36,6 +36,14 @@ Cursor Agent CLI configuration for consistent behavior across systems.
    cursor-agent --print "What is 2+2? Reply with only the number."
    ```
 
+## Validation
+
+`task validate` runs cursor-agent with test prompts, then asks cursor-agent to evaluate whether the outputs followed the config rules. The agent itself decides PASS/FAIL.
+
+- `task validate` – Uses cached test outputs, runs one eval call (~3 min)
+- `task validate:live` – Runs all prompts live + eval (4 API calls, ~5–10 min)
+- `task validate:quick` – Cached outputs + injected verdict (no API calls)
+
 ## Update after changing config
 
 ```bash

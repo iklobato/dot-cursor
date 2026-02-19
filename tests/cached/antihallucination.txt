@@ -1,0 +1,7 @@
+For Terraform for a database, decide in this order:
+
+1. Provider first (AWS, GCP, Azure, DigitalOcean, etc.)
+2. State backend next (S3, GCS, Terraform Cloud, etc.)
+3. Region
+
+What provider, state backend, and region do you want to use?

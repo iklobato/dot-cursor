@@ -1,0 +1,4 @@
+def parity(n):
+    if n % 2 != 0:
+        return "odd"
+    return "even"
