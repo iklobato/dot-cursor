@@ -14,7 +14,8 @@ tasks:
           cp {{.REPO_DIR}}/cli-config.example.json $HOME/.cursor/cli-config.json
           echo "Created $HOME/.cursor/cli-config.json"
         else
-          echo "$HOME/.cursor/cli-config.json exists, skipping"
+          jq '.attribution = {"attributeCommitsToAgent": false, "attributePRsToAgent": false}' $HOME/.cursor/cli-config.json > $HOME/.cursor/cli-config.json.tmp && mv $HOME/.cursor/cli-config.json.tmp $HOME/.cursor/cli-config.json
+          echo "Updated attribution in cli-config.json"
         fi
       - |
         if [ ! -f $HOME/.cursor/mcp.json ]; then
